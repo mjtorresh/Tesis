@@ -1,0 +1,390 @@
+\section{Proceso de solución juego de señalización}
+A continuación se evalúan los candidatos a equilibrio y se determina las condiciones para que sean equilibrios.  En caso de que el jugador 2 sea indiferente entre interactuar o no interactuar, se toma como mejor respuesta interactuar. Sea $\gamma_i$ la estrategia del jugador $i$, y $\forall k \in \{F,M\} $,
+\small{
+\begin{enumerate}
+    % Agrupadores
+    \item $\gamma_1(K)=E_k, \ \gamma_1(-K)=E_k, \ \gamma_1(O)=E_k$ %1%
+    \begin{enumerate}
+        \item Pagos esperados del Jugador 2
+        \begin{enumerate}
+            \item Creencias
+                \begin{eqnarray*}
+                    P(K|E_k)&=&\frac{P(E_k|K)P(K)}{P(E_k|F)P(K)+P(E_k|-K)P(-K)+P(E_k|O)P(O)}\\
+                            &=&\frac{0.495}{0.495+0.495+0.01}\\
+                            &=&0.495\\
+                    P(-K|E_k)&=&\frac{P(E_k|-K)P(-K)}{P(E_k|F)P(K)+P(E_k|-K)P(-K)+P(E_k|O)P(O)}\\
+                             &=&\frac{0.495}{0.495+0.495+0.01}\\
+                             &=&0.495\\
+                    P(O|E_k)&=&\frac{P(E_k|O)P(O)}{P(E_k|K)P(K)+P(E_k|-K)P(-K)+P(E_k|O)P(O)}\\
+                            &=&\frac{0.01}{0.495+0.495+0.01}\\
+                            &=&0.01\\
+                    P(K|E_{-k})&=&p\\
+                    P(-K|E_{-k})&=&q\\
+                    P(O|E_{-k})&=&1-p-q\\
+                \end{eqnarray*}
+
+            \item Pagos esperados del Jugador 2
+            \begin{itemize}
+                \item Si el jugador 2 recibe $E_k$ como señal
+                \begin{eqnarray*}
+                U_{2}^{e}(I)&=&P(K|E_k)V(K,E_k,I)\ +\ P(-K|E_k)V(-K,E_k,I)\\
+                            &+&P(O|E_k)V(O,E_k,I)\\
+                            &=&0.495*0\ +\ 0.495*(-\theta)\ + \ 0.01*(-\theta)\\
+                            &=&0.505*(-\theta)\\
+                U_{2}^{e}(NI)&=&P(K|E_k)V(F,E_k,NI)\ +\ P(-K|E_k)V(-K,E_k,NI)\\
+                             &+&P(O|E_k)V(O,E_k,NI)\\
+                             &=&0.495*(-\eta)\ +\ 0.495*(-\eta)\ + \ 0.01*(-\eta)\\
+                             &=&-\eta\\
+                \end{eqnarray*}
+
+                La mejor respuesta del jugador 2 si recibe un señal $E_k$ es:
+                \begin{equation*}
+                \gamma_2(E_k)=
+                \begin{cases}
+                    I \text{ si } \eta \geq 0.505\theta \\
+                    NI \text{ si } \eta < 0.505\theta \\
+                \end{cases}    
+                \end{equation*}
+                
+                \item Si el jugador 2 recibe $E_{-k}$ como señal
+                \begin{eqnarray*}
+                U_{2}^{e}(I)&=&P(K|E_{-k})V(K,E_{-k},I)\ +\ P(-K|E_{-k})V(-K,E_{-k},I)\\
+                            &+&P(O|E_{-k})V(O,E_{-k},I)\\
+                            &=&p*(-\theta)\ +\ q*0\ + \ (1-p-q)*(-\theta)\\
+                            &=&(1-q)*(-\theta)\\
+                U_{2}^{e}(NI)&=&P(K|E_{-k})V(K,E_{-k},NI)\ +\ P(-K|E_m)V(-K,E_{-k},NI)\\ 
+                             &+&P(O|E_{-k})V(O,E_{-k},NI)\\
+                             &=&p*(-\eta)\ +\ q*(-\eta)\ + \ (1-p-q)*(-\eta)\\
+                             &=&-\eta\\
+                \end{eqnarray*}
+
+                La mejor respuesta del jugador 2 si recibe un señal $E_{-k}$ es:
+                \begin{equation*}
+                \gamma_2(E_{-k})=
+                \begin{cases}
+                    I \text{ si } \eta \geq (1-q)\theta \\
+                    NI \text{ si } \eta < (1-q)\theta \\
+                \end{cases}    
+                \end{equation*}
+        \end{itemize}
+        \end{enumerate}
+        \item Incentivos a desviar del Jugador 1
+        \begin{itemize}
+        \item Si $\eta \in [0.505\theta,\infty) \wedge \eta \in [(1-q)\theta,\infty)$
+            \begin{itemize}
+                \item Si $ \iota_1=K  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} - \xi $
+                \item Si $ \iota_1=-K $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k - \xi \geq \Pi_{-k} $
+                \item Si $ \iota_1=O  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} $
+            \end{itemize}
+        \item Si $\eta \in [0.505\theta,\infty) \wedge \eta \in (0,(1-q)\theta)$
+            \begin{itemize}
+                \item Si $ \iota_1=K  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} - \xi - \beta $
+                \item Si $ \iota_1=-K $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k - \xi \geq \Pi_{-k} - \beta $
+                \item Si $ \iota_1=O  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} - \beta $
+            \end{itemize}
+        \item Si $\eta \in (0,0.505\theta) \wedge \eta \in [(1-q)\theta,\infty)$
+            \begin{itemize}
+                \item Si $ \iota_1=K  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k - \beta \geq \Pi_{-k} - \xi $
+                \item Si $ \iota_1=-K $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k - \xi - \beta \geq \Pi_{-k} $
+                \item Si $ \iota_1=O  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k - \beta \geq \Pi_{-k} $
+            \end{itemize}
+        \item Si $\eta \in (0,0.505\theta) \wedge \eta \in (0,(1-q)\theta)$
+            \begin{itemize}
+                \item Si $ \iota_1=K  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} - \xi $
+                \item Si $ \iota_1=-K $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k - \xi \geq \Pi_{-k} $
+                \item Si $ \iota_1=O  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} $
+            \end{itemize}
+        \end{itemize}
+    
+    Por lo tanto, 
+    
+    \noindent (i) $(\gamma_1(K)=\gamma_1(-K)=\gamma_1(O)=E_k, \gamma_2(E_k)=I, \gamma_2(E_{-k})=I)$ es equilibrio si $\eta \in [0.505\theta, \infty) \wedge \eta \in [(1-q)\theta, \infty) \wedge \Pi_1(E_{k})- \xi \geq \Pi_1(E_{-k})$ 
+    
+    \noindent (ii) $(\gamma_1(K)=\gamma_1(-K)=\gamma_1(O)=E_k, \gamma_2(E_k)=I, \gamma_2(E_{-k})=NI)$ es equilibrio si $\eta \in [0.505\theta, \infty) \wedge \eta \in (0, (1-q)\theta) \wedge \Pi_1(E_{k})- \xi \geq \Pi_1(E_{-k}-\beta)$ 
+    
+    \noindent (iii) $(\gamma_1(K)=\gamma_1(-K)=\gamma_1(O)=E_k, \gamma_2(E_k)=NI, \gamma_2(E_{-k})=I)$ es equilibrio si $\eta \in (0, 0.505\theta) \wedge \eta \in [(1-q)\theta, \infty) \wedge \Pi_1(E_{k})- \xi -\beta \geq \Pi_1(E_{-k})$ 
+    
+    \noindent (iv) $(\gamma_1(K)=\gamma_1(-K)=\gamma_1(O)=E_k, \gamma_2(E_k)=NI, \gamma_2(E_{-k})=NI)$ es equilibrio si $\eta\in (0, 0.505\theta) \wedge \eta \in (0, (1-q)\theta) \wedge \Pi_1(E_{k})- \xi \geq \Pi_1(E_{-k})$
+    \end{enumerate}   
+    
+    % Separadores
+    \item $\gamma_1(K)=E_k, \ \gamma_1(-K)=E_{-k}, \ \gamma_1(O)=E_{k}$ %2%
+    \begin{enumerate}
+    \item Pagos esperados del Jugador 2
+    \begin{enumerate}
+        \item Creencias
+            \begin{eqnarray*}
+                P(K|E_k)&=&\frac{P(E_k|K)P(K)}{P(E_k|K)P(K)+P(E_k|-K)P(-K)+P(E_k|O)P(O)}\\
+                        &=&\frac{0.495}{0.495+0+0.01}\\
+                        &=&0.98\\
+                P(-K|E_k)&=&\frac{P(E_k|-K)P(-K)}{P(E_k|K)P(K)+P(E_k|-K)P(-K)+P(E_k|O)P(O)}\\
+                        &=&\frac{0}{0.495+0+0.01}\\
+                        &=&0\\
+                P(O|E_k)&=&\frac{P(E_k|O)P(O)}{P(E_k|F)P(K)+P(E_k|-K)P(-K)+P(E_k|O)P(O)}\\
+                        &=&\frac{0.01}{0.495+0+0.01}\\
+                        &=&0.02\\
+                P(K|E_{-k})&=&\frac{P(E_{-k}|F)P(K)}{P(E_{-k}|K)P(K)+P(E_{-k}|-K)P(-K)+P(E_{-k}|O)P(O)}\\
+                        &=&\frac{0}{0+0.495+0}\\
+                        &=&0\\
+                P(-K|E_{-k})&=&\frac{P(E_{-k}|-K)P(-K)}{P(E_{-k}|K)P(K)+P(E_{-k}|-K)P(-K)+P(E_{-k}|O)P(O)}\\
+                        &=&\frac{0.495}{0+0.495+0}\\
+                        &=&1\\
+                P(O|E_{-k})&=&\frac{P(E_{-k}|O)P(O)}{P(E_{-k}|K)P(K)+P(E_{-k}|-K)P(-K)+P(E_{-k}|O)P(O)}\\
+                        &=&\frac{0}{0+0.495+0}\\
+                        &=&0
+            \end{eqnarray*}
+        \item Pagos esperados del Jugador 2
+        \begin{itemize}
+           \item Si el jugador 2 recibe $E_k$ como señal
+            \begin{eqnarray*}
+                U_{2}^{e}(I)&=&P(K|E_k)V(K,E_k,I)\ +\ P(-K|E_k)V(-K,E_k,I)\\
+                            &+&P(O|E_k)V(O,E_k,I)\\
+                            &=&0.98*0\ +\ 0*(-\theta)\ + \ 0.02*(-\theta)\\
+                            &=&0.02*(-\theta)\\
+                U_{2}^{e}(NI)&=&P(K|E_k)V(K,E_k,NI)\ +\ P(-K|E_k)V(-K,E_k,NI)\\ 
+                             &+&P(O|E_k)V(O,E_k,NI)\\
+                             &=&0.98*(-\eta)\ +\ 0*(-\eta)\ + \ 0.02*(-\eta)\\
+                             &=&-\eta
+            \end{eqnarray*}
+
+            La mejor respuesta del jugador 2 si recibe un señal $E_k$ es:
+            \begin{equation*}
+                \gamma_2(E_k)=
+                \begin{cases}
+                    I \text{ si } \eta \geq 0.02\theta \\
+                    NI \text{ si } \eta < 0.02\theta \\
+                \end{cases}    
+               \end{equation*}
+                
+        \item Si el jugador 2 recibe $E_{-k}$ como señal
+            \begin{eqnarray*}
+                U_{2}^{e}(I)&=&P(K|E_{-k})V(K,E_{-k},I)\ +\ P(-K|E_{-k})V(-K,E_{-k},I)\\ 
+                            &+&P(O|E_{-k})V(O,E_{-k},I)\\
+                            &=&0*(-\theta)\ +\ 1*0\ + \ 0*(-\theta)\\
+                            &=&0\\
+                U_{2}^{e}(NI)&=&P(K|E_{-k})V(K,E_{-k},NI)\ +\ P(-K|E_{-k})V(-K,E_{-k},NI)\\
+                             &+&P(O|E_{-k})V(O,E_{-k},NI)\\
+                             &=&0*(-\eta)\ +\ 1*(-\eta)\ + \ 0*(-\eta)\\
+                             &=&-\eta
+            \end{eqnarray*}
+
+            La mejor respuesta del jugador 2 (dado que $\eta>0$) si recibe un señal $E_{-k}$ es:
+            \begin{equation*}
+                \gamma_2(E_{-k})= I
+            \end{equation*}
+        \end{itemize}
+        \end{enumerate}
+        \item Incentivos a desviar del Jugador 1
+        \begin{itemize}
+        \item Si $\eta \in [0.02\theta,\infty) $
+            \begin{itemize}
+                \item Si $ \iota_1=K  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} - \xi $
+                \item Si $ \iota_1=-K $, el jugador 1 no tiene incentivos a desviar si $ \Pi_{-k} \geq \Pi_{-k} - \xi $
+                \item Si $ \iota_1=O  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} $
+            \end{itemize}
+        \item Si $\eta \in (0,0.02\theta) $
+            \begin{itemize}
+                \item Si $ \iota_1=K  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} - \xi - \beta $
+                \item Si $ \iota_1=-K $, el jugador 1 no tiene incentivos a desviar si $ \Pi_{-k} -\beta \geq \Pi_{k} - \xi $
+                \item Si $ \iota_1=O  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k - \beta \geq \Pi_{-k} $
+            \end{itemize}
+        \end{itemize}
+    
+    Por lo tanto, 
+
+    \noindent (i) $(\gamma_1(K)=E_k, \gamma_1(-K)=E_{-k}, \gamma_1(O)=E_k, \gamma_2(E_k)=NI, \gamma_2(E_{-k})=I)$ es equilibrio si $\eta\in(0, 0.02\theta) \wedge \Pi_1(E_{k})- \beta \geq \Pi_1(E_{-k}) \geq  \Pi_1(E_{k})- \beta - \xi$
+
+    \noindent (ii) $(\gamma_1(K)=E_k, \gamma_1(-K)=E_{-k}, \gamma_1(O)=E_k, \gamma_2(E_k)=I, \gamma_2(E_{-k})=I)$ es equilibrio si $\eta\in[0.02\theta, \infty) \wedge \Pi_1(E_{k}) \geq \Pi_1(E_{-k}) \geq \Pi_1(E_{k})- \xi$
+    \end{enumerate}   
+
+    \item $\gamma_1(K)=E_{-k}, \ \gamma_1(-K)=E_k, \ \gamma_1(O)=E_{k}$ %3%
+    \begin{enumerate}
+    \item Pagos esperados del Jugador 2
+    \begin{enumerate}
+        \item Creencias
+            \begin{eqnarray*}
+                P(K|E_k)&=&\frac{P(E_k|K)P(K)}{P(E_k|K)P(K)+P(E_k|-K)P(-K)+P(E_k|O)P(O)}\\
+                        &=&\frac{0}{0+0.495+0}\\
+                        &=&0\\
+                P(-K|E_k)&=&\frac{P(E_k|-K)P(-K)}{P(E_k|K)P(K)+P(E_k|-K)P(-K)+P(E_k|O)P(O)}\\
+                        &=&\frac{0.495}{0+0.495+0}\\
+                        &=&1\\
+                P(O|E_k)&=&\frac{P(E_k|O)P(O)}{P(E_k|K)P(K)+P(E_k|-K)P(-K)+P(E_k|O)P(O)}\\
+                        &=&\frac{0.01}{0+0.495+0}\\
+                        &=&0\\
+                P(K|E_{-k})&=&\frac{P(E_{-k}|K)P(K)}{P(E_{-k}|K)P(K)+P(E_{-k}|-K)P(-K)+P(E_{-k}|O)P(O)}\\
+                        &=&\frac{0.495}{0.495+0+0.01}\\
+                        &=&0.98\\
+                P(-K|E_{-k})&=&\frac{P(E_{-k}|-K)P(-K)}{P(E_{-k}|K)P(K)+P(E_{-k}|-K)P(-K)+P(E_{-k}|O)P(O)}\\
+                        &=&\frac{0}{0.495+0+0.01}\\
+                        &=&0\\
+                P(O|E_{-k})&=&\frac{P(E_{-k}|O)P(O)}{P(E_{-k}|K)P(K)+P(E_{-k}|-K)P(-K)+P(E_{-k}|O)P(O)}\\
+                        &=&\frac{0.01}{0.495+0+0.01}\\
+                        &=&0.02
+            \end{eqnarray*}
+            
+        \item Pagos esperados del Jugador 2
+        \begin{itemize}
+            \item Si el jugador 2 recibe $E_k$ como señal
+            \begin{eqnarray*}
+                U_{2}^{e}(I)&=&P(K|E_k)V(K,E_k,I)\ +\ P(-K|E_k)V(-K,E_k,I)\\ 
+                            &+&P(O|E_k)V(O,E_k,I)\\
+                            &=&0*0\ +\ 1*(-\theta)\ + \ 0*(-\theta)\\
+                            &=&-\theta\\
+                U_{2}^{e}(NI)&=&P(K|E_k)V(K,E_k,NI)\ +\ P(-K|E_k)V(-K,E_k,NI)\\ 
+                             &+&P(O|E_k)V(O,E_kNI)\\
+                             &=&0*(-\eta)\ +\ 1*(-\eta)\ + \ 0*(-\eta)\\
+                             &=&-\eta
+            \end{eqnarray*}
+
+            La mejor respuesta del jugador 2 si recibe un señal $E_k$ es:
+            \begin{equation*}
+                \gamma_2(E_k)=
+                \begin{cases}
+                    I \text{ si } \eta \geq \theta \\
+                    NI \text{ si } \eta < \theta \\
+                \end{cases}    
+            \end{equation*}
+                
+        \item Si el jugador 2 recibe $E_{-k}$ como señal
+            \begin{eqnarray*}
+                U_{2}^{e}(I)&=&P(K|E_{-k})V(K,E_{-k},I)\ +\ P(-K|E_{-k})V(-K,E_{-k},I)\\ 
+                            &+&P(O|E_{-k})V(O,E_{-k},I)\\
+                            &=&0.98*(-\theta)\ +\ 0*0\ + \ 0.02*(-\theta)\\
+                            &=&-\theta
+            \end{eqnarray*}
+            \begin{eqnarray*}
+                U_{2}^{e}(NI)&=&P(K|E_{-k})V(K,E_{-k},NI)\ +\ P(-K|E_{-k})V(-K,E_{-k},NI)\\
+                             &+&P(O|E_{-k})V(O,E_{-k},NI)\\
+                             &=&0.98*(-\eta)\ +\ 0*(-\eta)\ + \ 0.02*(-\eta)\\
+                             &=&-\eta
+            \end{eqnarray*}
+            La mejor respuesta del jugador 2 si recibe un señal $E_{-k}$ es:
+            \begin{equation*}
+                \gamma_2(E_{-k})=
+                \begin{cases}
+                    I \text{ si } \eta \geq \theta \\
+                    NI \text{ si } \eta < \theta \\
+                \end{cases}    
+            \end{equation*}
+        \end{itemize}
+    \end{enumerate}
+    \item Incentivos a desviar del Jugador 1
+    \begin{itemize}
+        \item Si $\eta \in [\theta,\infty) $
+            \begin{itemize}
+                \item Si $ \iota_1=K  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_{-k} - \xi \geq \Pi_k $
+                \item Si $ \iota_1=-K $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k - \xi \geq \Pi_{-k} $
+                \item Si $ \iota_1=O  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} $
+            \end{itemize}
+        \item Si $\eta \in (0,\theta) $
+            \begin{itemize}
+                \item Si $ \iota_1=K  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_{-k} - \xi \geq \Pi_k $
+                \item Si $ \iota_1=-K $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k - \xi \geq \Pi_{-k} $
+                \item Si $ \iota_1=O  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} $
+        \end{itemize}
+    \end{itemize}
+    
+    Por lo tanto, no hay equilibrio si $\gamma_1(K)=E_{-k}, \ \gamma_1(-K)=E_k, \ \gamma_1(O)=E_{k}$
+    \end{enumerate}
+       
+    \item $\gamma_1(K)=E_k, \ \gamma_1(-K)=E_k, \ \gamma_1(O)=E_{-k}$ %4%
+    \begin{enumerate}
+    \item Pagos esperados del Jugador 2
+    \begin{enumerate}
+        \item Creencias
+            \begin{eqnarray*}
+                P(K|E_k)&=&\frac{P(E_k|K)P(K)}{P(E_k|K)P(K)+P(E_k|-K)P(-K)+P(E_k|O)P(O)}\\
+                        &=&\frac{0.495}{0.495+0.495+0}\\
+                        &=&0.5\\
+                P(-K|E_k)&=&\frac{P(E_k|-K)P(-K)}{P(E_k|K)P(K)+P(E_k|-K)P(-K)+P(E_k|O)P(O)}\\
+                        &=&\frac{0.495}{0.495+0.495+0}\\
+                        &=&0.5\\
+                P(O|E_k)&=&\frac{P(E_k|O)P(O)}{P(E_k|K)P(K)+P(E_k|-K)P(-K)+P(E_k|O)P(O)}\\
+                        &=&\frac{0}{0.495+0.495+0}\\
+                        &=&0\\
+                P(K|E_{-k})&=&\frac{P(E_{-k}|K)P(K)}{P(E_{-k}|K)P(K)+P(E_{-k}|-K)P(-K)+P(E_{-k}|O)P(O)}\\
+                        &=&\frac{0}{0+0+0.01}\\
+                        &=&0\\
+                P(-K|E_{-k})&=&\frac{P(E_{-k}|-K)P(-K)}{P(E_{-k}|K)P(K)+P(E_{-k}|-K)P(-K)+P(E_{-k}|O)P(O)}\\
+                        &=&\frac{0}{0+0+0.1}\\
+                        &=&0\\
+                P(O|E_{-k})&=&\frac{P(E_{-k}|O)P(O)}{P(E_{-k}|K)P(K)+P(E_{-k}|-K)P(-K)+P(E_{-k}|O)P(O)}\\
+                        &=&\frac{0.1}{0+0+0.1}\\
+                        &=&1
+            \end{eqnarray*}
+        \item Pagos esperados del Jugador 2
+        \begin{itemize}
+        \item Si el jugador 2 recibe $E_k$ como señal
+            \begin{eqnarray*}
+                U_{2}^{e}(I)&=&P(K|E_k)V(K,E_k,I)\ +\ P(-K|E_k)V(-K,E_k,I)\\
+                            &+&P(O|E_k)V(O,E_k,I)\\
+                            &=&0.5*0\ +\ 0.5*(-\theta)\ + \ 0*(-\theta)\\
+                            &=&0.5*(-\theta)\\
+                U_{2}^{e}(NI)&=&P(K|E_k)V(K,E_k,NI)\ +\ P(-K|E_k)V(-K,E_k,NI)\\ 
+                             &+&P(O|E_k)V(O,E_k,NI)\\
+                             &=&0.5*(-\eta)\ +\ 0.5*(-\eta)\ + \ 0*(-\eta)\\
+                             &=&-\eta
+            \end{eqnarray*}
+
+            La mejor respuesta del jugador 2 si recibe un señal $E_k$ es:
+            \begin{equation*}
+                \gamma_2(E_k)=
+                \begin{cases}
+                    I \text{ si } \eta \geq 0.5\theta \\
+                    NI \text{ si } \eta < 0.5\theta \\
+                \end{cases}    
+            \end{equation*}
+                
+        \item Si el jugador 2 recibe $E_{-k}$ como señal
+            \begin{eqnarray*}
+                U_{2}^{e}(I)&=&P(K|E_{-k})V(K,E_{-k},I)\ +\ P(-K|E_{-k})V(K,E_{-k},I)\\
+                            &+&P(O|E_{-k})V(O,E_{-k},I)\\
+                            &=&0*(-\theta)\ +\ 0*0\ + \ 1*(-\theta)\\
+                            &=&-\theta\\
+                U_{2}^{e}(NI)&=&P(K|E_{-k})V(K,E_{-k},NI)\ +\ P(-K|E_{-k})V(-K,E_{-k},NI)\\
+                             &+&P(O|E_{-k})V(O,E_{-k},NI)\\
+                             &=&0*(-\eta)\ +\ 0*(-\eta)\ + \ 1*(-\eta)\\
+                             &=&-\eta
+            \end{eqnarray*}
+
+            La mejor respuesta del jugador 2 si recibe un señal $E_{-k}$ es:
+            \begin{equation*}
+                \gamma_2(E_{-k})=
+                \begin{cases}
+                    I \text{ si } \eta \geq \theta \\
+                    NI \text{ si } \eta < \theta \\
+                \end{cases}    
+            \end{equation*}
+        \end{itemize}
+    \end{enumerate}
+    \item Incentivos a desviar del Jugador 1
+    \begin{itemize}
+        \item Si $\eta \in [\theta,\infty) $
+            \begin{itemize}
+                \item Si $ \iota_1=K  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} - \xi $
+                \item Si $ \iota_1=-K $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k - \xi \geq \Pi_{-k} $
+                \item Si $ \iota_1=O  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} $
+            \end{itemize}
+        \item Si $\eta \in [0.5\theta, \theta) $
+            \begin{itemize}
+                \item Si $ \iota_1=K  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} - \xi - \beta $
+                \item Si $ \iota_1=-K $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k - \xi \geq \Pi_{-k} - \beta $
+                \item Si $ \iota_1=O  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_{-k} - \beta \geq \Pi_{k} $
+            \end{itemize}
+        \item Si $\eta \in (0, 0.5\theta) $
+            \begin{itemize}
+                \item Si $ \iota_1=K  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} - \xi $
+                \item Si $ \iota_1=-K $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k - \xi \geq \Pi_{-k} $
+                \item Si $ \iota_1=O  $, el jugador 1 no tiene incentivos a desviar si $ \Pi_k \geq \Pi_{-k} $
+            \end{itemize}
+    \end{itemize}
+    
+    Por lo tanto, no hay equilibrio si $\gamma_1(K)=E_k, \ \gamma_1(-K)=E_k, \ \gamma_1(O)=E_{-k}$.
+    \end{enumerate}
+  
+    
+\end{enumerate}
+}
+
+
