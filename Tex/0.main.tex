@@ -48,24 +48,26 @@
 \usepackage{mathtools}
 \usepackage{caption} 
 \captionsetup[subtable]{skip=5pt}
+\usepackage[section]{placeins}
+\usepackage{chngcntr}
 
 \addto\captionsenglish{\renewcommand{\figurename}{Figura}}
 \addto\captionsenglish{\renewcommand{\tablename}{Tabla}}
 \renewcommand{\refname}{Lista de Referencias}
 
 \title{¿Interactuar o no interactuar? Un estudio experimental sobre expresiones de género}
-\author{María José Torres Herrera \thanks{Asistente de Investigación, Universidad de los Andes. Correo: mj.torres10@uniandes.edu.co. Agradezco especialmete a Diego Amador y a Juan Camilo Cárdenas por su asesoría y sus contribuciones, y a Andrés Moya por sus comentarios y apoyo. Agradezco también a Paula Jaramillo y a José Alberto Guerra. Finalmente agradezco a Julián Enrique Chitiva, a Natalia Martínez Camelo, a Alfredo Orozco, a Laura Motta, a Daniel Zarama, a Liliana Acevedo y a Camil Martínez por su apoyo.}}
-\date{22 de mayo de 2020}
+\author{María José Torres Herrera \thanks{Asistente de Investigación, Universidad de los Andes. Correo: mj.torres10@uniandes.edu.co. Agradezco especialmente a Diego Amador y a Juan Camilo Cárdenas por su asesoría, sus contribuciones y su apoyo, y a Andrés Moya por sus comentarios y apoyo. Agradezco a Ana María Tribín Uribe, a José Alberto Guerra y a Paula Jaramillo por sus comentarios. Finalmente agradezco a Julián Enrique Chitiva, a Natalia Martínez Camelo, a Natalia Otero, Alfredo Orozco, a Laura Motta, a Daniel Zarama, a Liliana Acevedo y a Camil Martínez por su apoyo.}}
+\date{26 de junio de 2020}
 
 \begin{document}
     \begin{singlespace}    
 	\maketitle
 	\end{singlespace} 
 \begin{abstract}
-Este trabajo estudia si una persona está más dispuesta a interactuar con un par cuando observa una serie de expresiones de género, manteniendo la identidad como información privada. Para esto, este estudio realiza un experimento de campo en el que  los participantes debían elegir con quién desarrollar una tarea, únicamente con la información de unas de sus expresiones de género y una características generales. El experimento replica el modelo de de este estudio en el que un jugador señaliza su identidad con una expresión de género femenina o una masculina, y el otro jugador decide si interactúa o no con ese jugador. Este trabajo encuentra evidencia sugestiva de que la disposición a interactuar entre pares sí cambia cuando cambia la combinación de expresiones de género que estos observan de los demás. En particular encuentra que, mientras la disposición a interactuar con personas que presentan una vestimenta masculina está determinada solo por la vestimenta, la disposición a interactuar con personas que tienen vestimenta femenina está determinada por la vestimenta y si reportan una habilidad considerada femenina o masculina. 
+Este trabajo estudia cómo cambia la disposición a interactuar entre pares cuando observan diferentes expresiones de género y la identidad es información privada. Para esto, se realizó un experimento de campo en el que los participantes debían elegir con quién desarrollar una tarea teniendo, únicamente, información de unas de sus expresiones de género y unas características generales. El experimento replica el modelo de este estudio en el que un jugador señaliza su identidad con una expresión de género femenina o una masculina, y el otro jugador decide si interactúa o no con dicho jugador. Este trabajo encuentra evidencia sugestiva de que la disposición a interactuar entre pares sí cambia cuando cambia la combinación de expresiones de género que estos observan de los demás. En particular encuentra que, mientras la disposición a interactuar con personas que presentan una vestimenta masculina está determinada solo por la vestimenta, la disposición a interactuar con personas que tienen vestimenta femenina está determinada por la vestimenta y si reportan una habilidad considerada femenina o masculina. 
 \end{abstract}
 \vspace*{0.3cm}
-\noindent \textbf{Palabras clave:} Expresiones de género; Normas sociales; Interacción de pares; Información imperfecta\\
+\noindent \textbf{Palabras claves:} Interacción de pares; Información imperfecta; Expresiones de género; Normas sociales \\
 \noindent \textbf{Clasificación JEL:} A14; B54; C70; C92
 \vfill
 \pagebreak
@@ -75,21 +77,19 @@ Este trabajo estudia si una persona está más dispuesta a interactuar con un pa
 \input{Tex/3.experimento.tex}
 \input{Tex/4.datos.tex}
 \input{Tex/5.hipotesis_resultados.tex}
-\input{Tex/6.conclusiones.tex}
+\input{Tex/6.discusion}
+\input{Tex/7.conclusiones.tex}
 
 \vfill
 \pagebreak
 \begin{appendix}
-    \input{Tex/A1.equilibriums}
-    \vfill
-    \pagebreak
-    \input{Tex/A2.genderexp_distribution}
-    \vfill
-    \pagebreak
-    \input{Tex/A3.altestimates}
-    \vfill
-    \pagebreak    
-    \input{Tex/A4.powercals}
+    \counterwithin{figure}{section}
+    \counterwithin{table}{section}
+    \input{Tex/A1.equilibrios}
+    \input{Tex/A2.descriptivas}
+    \input{Tex/A3.estimacionesalt}
+  
+    \input{Tex/A4.powercalcs}
     \vfill
     \pagebreak    
     %\input{Tex/solucion_modelo}
